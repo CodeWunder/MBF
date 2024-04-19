@@ -26,6 +26,7 @@
     "react-notifications-component": "^4.0.1",
     "react-paginate": "^8.1.4",
     "react-parallax-tilt": "^1.7.99",
+    "react-paystack": "^5.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",

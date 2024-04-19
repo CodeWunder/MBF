@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { usePaystackPayment } from "react-paystack";
 import ResetLocation from "../../helpers/ResetLocation";
 
 const CheckoutForm = ({ totalPayment, productsQuantity }) => {
@@ -6,30 +7,38 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [email, setEmail] = useState(""); // Changed state variable to store email
+
+  // Paystack configuration
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: email,
+    amount: totalPayment * 100, // Amount in kobo (100 kobo = ₦1)
+    publicKey: "pk_test_5817e3d9657270635e0935b6d57ba1e277ba7b03",
+  };
+
+  // Paystack success callback
+  const onSuccess = (reference) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+  };
+
+  // Paystack close callback
+  const onClose = () => {
+    // Implementation for whatever you want to do when the Paystack dialog is closed.
+    console.log("Payment dialog closed");
+  };
+
+  // Initialize Paystack payment
+  const initializePayment = usePaystackPayment(config);
 
   const handleProceedToPayment = () => {
     // Reset location or perform any other necessary actions
     ResetLocation();
-  
-    // Construct the message with name, delivery option, phone number, address, total payment, and quantity
-    const message = `Hello, I'm interested in making a purchase with the following details:
-    Name: ${name}
-    Delivery Option: ${deliveryOption}
-    Phone Number: ${phoneNumber}
-    Address: ${address}
-    Quantity: ${productsQuantity}
-    Total Payment: ₦${totalPayment}`;
-  
-    // Encode the message for URL
-    const encodedMessage = encodeURIComponent(message);
-  
-    // Construct the WhatsApp link with the encoded message
-    const whatsappLink = `https://wa.me/+2347067903294?text=${encodedMessage}`;
-  
-    // Open the WhatsApp link in a new window
-    window.open(whatsappLink, "_blank");
+
+    // Initialize Paystack payment when button is clicked
+    initializePayment(onSuccess, onClose);
   };
-  
 
   return (
     <section className="checkout-personal-information">
@@ -73,6 +82,15 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           id="phone-number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
+          className="input-field"
+        />
+
+        <label htmlFor="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="input-field"
         />
 
