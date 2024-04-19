@@ -1,6 +1,5 @@
 import Beans from "../assets/images/beans.jpg";
 import Okro from "../assets/images/okro.jpg";
-import VeggiePizza from "../assets/images/veggie-pizza.jpg";
 import Tomatoes from "../assets/images/product-images/tomato-medium.jpg";
 import MeatPizza from "../assets/images/meat-pizza.jpg";
 import SpringOnions from "../assets/images/product-images/spring-onions.jpg";

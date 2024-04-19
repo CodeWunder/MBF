@@ -17,8 +17,8 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     Delivery Option: ${deliveryOption}
     Phone Number: ${phoneNumber}
     Address: ${address}
-    Total Payment: ₦${totalPayment}
-    Quantity: ${productsQuantity}`;
+    Quantity: ${productsQuantity}
+    Total Payment: ₦${totalPayment}`;
   
     // Encode the message for URL
     const encodedMessage = encodeURIComponent(message);
