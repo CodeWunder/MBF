@@ -1,21 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-//Leaflet
-import L from "leaflet";
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
-import { MapContainer, TileLayer } from "react-leaflet";
-import { Marker } from "react-leaflet";
-import { Popup } from "react-leaflet";
-
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-});
-L.Marker.prototype.options.icon = DefaultIcon;
-const position = [37.0902, -93.7129];
-
 
 const ContactLanding = () => {
   return (
@@ -27,22 +11,15 @@ const ContactLanding = () => {
         exit={{ opacity: 0, translateX: -300 }}
         transition={{ duration: 2 }}
       >
-        <MapContainer
-          id="map"
-          center={position}
-          zoom={9}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.129592394938!2d3.496979474754238!3d6.630822393363538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bec1fe78de66f%3A0x34420bc449e631b0!2s20%20Dorcas%20Elesho%20St%2C%20Ikorodu%2C%20104101%2C%20Lagos!5e0!3m2!1sen!2sng!4v1713617421075!5m2!1sen!2sng"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          title="Google Map"
+        ></iframe>
       </motion.div>
       <motion.div
         className="contact-emails"
@@ -52,10 +29,16 @@ const ContactLanding = () => {
         transition={{ duration: 2 }}
       >
         <h3>Contact Us</h3>
-        <p>Have a question, suggestion, or just want to say hello? We'd love to hear from you!</p>
+        <p>
+          Have a question, suggestion, or just want to say hello? We'd love to
+          hear from you!
+        </p>
         <section>
           <h4>Customer Support:</h4>
-          <p>Our dedicated customer support team is ready to assist you with any inquiries you may have.</p>
+          <p>
+            Our dedicated customer support team is ready to assist you with any
+            inquiries you may have.
+          </p>
           <ul>
             <li>- Email: mbfgbemidele5862@gmail.com</li>
             <li>- Phone: +234 708 6065 667</li>
@@ -65,14 +48,21 @@ const ContactLanding = () => {
         </section>
         <section>
           <h4>General Inquiries:</h4>
-          <p>If you have general questions about our company, partnerships, or anything else, feel free to get in touch.</p>
+          <p>
+            If you have general questions about our company, partnerships, or
+            anything else, feel free to get in touch.
+          </p>
           <ul>
             <li>- Email: mbfgbemidele5862@gmail.com</li>
           </ul>
         </section>
         <section>
           <h4>Feedback and Suggestions:</h4>
-          <p>We value your feedback and are always striving to improve. If you have any suggestions, comments, or ideas on how we can enhance our offerings, please let us know.</p>
+          <p>
+            We value your feedback and are always striving to improve. If you
+            have any suggestions, comments, or ideas on how we can enhance our
+            offerings, please let us know.
+          </p>
           <ul>
             <li>- Email: mbfgbemidele5862@gmail.com</li>
           </ul>
@@ -80,7 +70,6 @@ const ContactLanding = () => {
       </motion.div>
     </article>
   );
-}
-
+};
 
 export default ContactLanding;
