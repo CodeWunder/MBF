@@ -11,17 +11,17 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
 
+  // Calculate total amount including delivery fee
+  const totalAmount = totalPayment + deliveryFee;
+  
   // Paystack configuration
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount: (totalPayment + deliveryFee) * 100, // Amount in kobo (100 kobo = ₦1)
+    amount: (totalAmount) * 100, // Amount in kobo (100 kobo = ₦1)
     publicKey: "pk_test_5817e3d9657270635e0935b6d57ba1e277ba7b03",
   };
 
-  // Calculate total amount including delivery fee
-  const totalAmount = totalPayment + deliveryFee;
-  
   // Calculate delivery fee based on options
   useEffect(() => {
     let fee = 0;
