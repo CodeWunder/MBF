@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Header from './routes/landing/Header.js';
 import Footer from './components/footer/Footer';
+import { ToastContainer } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import {
   About,
   Cart,
@@ -26,6 +28,7 @@ import Privacy from './routes/privacy/Privacy.js';
 import Careers from './routes/careers/Careers.js';
 import Profile from './routes/profile/Profile.js';
 import ResetLocation from './helpers/ResetLocation.js';
+
 
 function App() {
   const [allCategories, setAllCategories] = useState([]);
@@ -420,6 +423,7 @@ function App() {
         validLogin={validLogin}
         productsQuantity={productsQuantity}
       />
+      <ToastContainer autoClose={2000} />
       <Routes>
         <Route path="/" element={<RootSection />} />
 

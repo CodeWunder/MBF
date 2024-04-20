@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify'; 
 import AddToCartButton from "../cart/AddToCartButton";
 import Attribute from "./Attribute";
 import ResetLocation from "../../helpers/ResetLocation";
@@ -33,10 +32,11 @@ const MenuGridItem = ({
   };
 
   const handleAddToCart = () => {
-    if (toast.success) {
-      toast.success(`${singleProduct.ItemName} added to cart`);
-    } else {
-      console.error("Toastify not initialized");
+    // Initialize toast if not already done
+    if (!toast.isActive("cartToast")) {
+      toast.success(`${singleProduct.ItemName} added to cart`, {
+        toastId: "cartToast",
+      });
     }
     handleAddProduct(singleProduct, selectedAttributes);
   };
@@ -90,7 +90,6 @@ const MenuGridItem = ({
           setTargetAttribute={setTargetAttribute}
         />
       </div>
-      <ToastContainer autoClose={2000} />
     </article>
   );
 };

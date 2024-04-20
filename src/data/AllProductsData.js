@@ -161,6 +161,22 @@ export const allProductsData = [
     ],
   },
   {
+    id: "Big-yam",
+    ItemImg: SmallYam,
+    ItemName: "Yam ",
+    ItemIngredients:
+      "Yams are a root vegetable with starchy tubers that can be baked, roasted, or mashed.",
+    ItemPrice: (6000).toFixed(2),
+    Category: "Pizza",
+    attributes: [
+      {
+        id: "size",
+        name: "size",
+        attributeOptions: [{ id: "large", value: "large" }],
+      },
+    ],
+  },
+  {
     id: "small-cabbages",
     ItemImg: Cabbages,
     ItemName: "Cabbages",
@@ -205,22 +221,6 @@ export const allProductsData = [
         id: "size",
         name: "size",
         attributeOptions: [{ id: "1kg", value: "1kg" }],
-      },
-    ],
-  },
-  {
-    id: "Big-yam",
-    ItemImg: SmallYam,
-    ItemName: "Yam ",
-    ItemIngredients:
-      "Yams are a root vegetable with starchy tubers that can be baked, roasted, or mashed.",
-    ItemPrice: (6000).toFixed(2),
-    Category: "Pizza",
-    attributes: [
-      {
-        id: "size",
-        name: "size",
-        attributeOptions: [{ id: "large", value: "large" }],
       },
     ],
   },
