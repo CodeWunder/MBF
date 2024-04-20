@@ -153,13 +153,17 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
                 <p>₦ {deliveryFee}</p>
               </section>
               <section className="totals-content">
-                <h4 className="cart-totals-sum">Total:</h4>
+                <h4 className="cart-totals-sum">Product Price:</h4>
+                <p>₦ {totalPayment}</p>
+              </section>
+              <section className="totals-content">
+                <h4 className="cart-totals-sum">Total Amount:</h4>
                 <p>₦ {totalAmount}</p>
               </section>
-            
             </section>
           )}
         </article>
+
         {/* Call handleProceedToPayment when button is clicked */}
         <button
           type="button"
