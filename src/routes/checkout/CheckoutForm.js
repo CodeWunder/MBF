@@ -18,7 +18,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount: (totalAmount) * 100, // Amount in kobo (100 kobo = ₦1)
+    amount: totalAmount * 100, // Amount in kobo (100 kobo = ₦1)
     publicKey: "pk_test_5817e3d9657270635e0935b6d57ba1e277ba7b03",
   };
 
@@ -144,10 +144,6 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
         <article className="checkout-carttotals">
           {productsQuantity === 0 ? null : (
             <section className="cart-totals">
-              <section className="totals-content">
-                <h4 className="cart-totals-sum">Quantity:</h4>
-                <p>{productsQuantity}</p>
-              </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Delivery Fee:</h4>
                 <p>₦ {deliveryFee}</p>
