@@ -114,13 +114,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 4px; /* Add border radius for rounded corners */
   box-sizing: border-box; /* Ensure padding and border are included in width */
 }
-.checkout-personal-information form .delivery-options {
+.checkout-personal-information form .delivery-options,
+.checkout-personal-information form .location-type{
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.checkout-personal-information form .delivery-options label {
+.checkout-personal-information form .delivery-options label,
+.checkout-personal-information form .location-type label{
   margin: 0 10px; /* Adjust margin between labels */
 }
 
