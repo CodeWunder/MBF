@@ -50,9 +50,6 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     // Reset location or perform any other necessary actions
     ResetLocation();
 
-    // Calculate delivery fee
-    calculateDeliveryFee();
-
     // Initialize Paystack payment when button is clicked
     initializePayment(onSuccess, onClose);
   };
@@ -174,4 +171,4 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-    
+               
