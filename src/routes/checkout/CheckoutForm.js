@@ -8,6 +8,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+  const [locationType, setLocationType] = useState("");
 
   // Paystack configuration
   const config = {
@@ -64,28 +65,28 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           <label htmlFor="express-delivery">Express Delivery</label>
         </div>
 
-        <div className="delivery-options">
+        <div className="location-type">
           <input
             type="radio"
             id="mainland"
-            name="location-area"
-            value="Mainland"
-            checked={deliveryOption === "mainland"}
-            onChange={() => setDeliveryOption("mainland")}
+            name="location-type"
+            value="mainland"
+            checked={locationType === "mainland"}
+            onChange={() => setLocationType("mainland")}
           />
           <label htmlFor="mainland">Mainland</label>
 
           <input
             type="radio"
             id="island"
-            name="delivery-option"
-            value="Island"
-            checked={deliveryOption === "island"}
-            onChange={() => setDeliveryOption("island")}
+            name="location-type"
+            value="island"
+            checked={locationType === "island"}
+            onChange={() => setLocationType("island")}
           />
           <label htmlFor="island">Island</label>
         </div>
-
+            
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -149,3 +150,4 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
+    
