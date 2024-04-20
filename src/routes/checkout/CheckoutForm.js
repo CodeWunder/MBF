@@ -64,6 +64,28 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           <label htmlFor="express-delivery">Express Delivery</label>
         </div>
 
+        <div className="delivery-options">
+          <input
+            type="radio"
+            id="mainland"
+            name="location-area"
+            value="Mainland"
+            checked={deliveryOption === "mainland"}
+            onChange={() => setDeliveryOption("mainland")}
+          />
+          <label htmlFor="mainland">Mainland</label>
+
+          <input
+            type="radio"
+            id="island"
+            name="delivery-option"
+            value="Island"
+            checked={deliveryOption === "island"}
+            onChange={() => setDeliveryOption("island")}
+          />
+          <label htmlFor="island">Island</label>
+        </div>
+
         <label htmlFor="name">Name:</label>
         <input
           type="text"
