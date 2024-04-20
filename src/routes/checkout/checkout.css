@@ -23,6 +23,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 0 auto;
   font-size: 3rem;
   margin-top: 10px;
+  text-transform: uppercase;
+  margin-top: 40px;
 }
 
 .checkout-form-container {
@@ -83,7 +85,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
+  box-shadow: 0 4px 6px rgb(216, 195, 11); /* Add box shadow for 3D effect */
 }
+
 @media (min-width: 768px) {
   .checkout-personal-information form {
     width: 40vw; /* Two columns on screens wider than 768px */
