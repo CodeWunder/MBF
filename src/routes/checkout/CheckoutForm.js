@@ -19,6 +19,9 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     publicKey: "pk_test_5817e3d9657270635e0935b6d57ba1e277ba7b03",
   };
 
+  // Calculate total amount including delivery fee
+  const totalAmount = totalPayment + deliveryFee;
+  
   // Calculate delivery fee based on options
   useEffect(() => {
     let fee = 0;
@@ -151,7 +154,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
               </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Total:</h4>
-                <p>₦ {totalPayment}</p>
+                <p>₦ {totalAmount}</p>
               </section>
             
             </section>
