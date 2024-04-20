@@ -9,13 +9,29 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [locationType, setLocationType] = useState("");
+  const [deliveryFee, setDeliveryFee] = useState(0);
 
   // Paystack configuration
   const config = {
     reference: new Date().getTime().toString(),
     email: email,
-    amount: totalPayment * 100, // Amount in kobo (100 kobo = ₦1)
+    amount: (totalPayment + deliveryFee) * 100, // Amount in kobo (100 kobo = ₦1)
     publicKey: "pk_test_5817e3d9657270635e0935b6d57ba1e277ba7b03",
+  };
+
+  // Calculate delivery fee based on options
+  const calculateDeliveryFee = () => {
+    let fee = 0;
+    if (deliveryOption === "normal" && locationType === "island") {
+      fee = 7000;
+    } else if (deliveryOption === "normal" && locationType === "mainland") {
+      fee = 4000;
+    } else if (deliveryOption === "express" && locationType === "island") {
+      fee = 8000;
+    } else if (deliveryOption === "express" && locationType === "mainland") {
+      fee = 6000;
+    }
+    setDeliveryFee(fee);
   };
 
   // Paystack success callback
@@ -33,6 +49,9 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const handleProceedToPayment = () => {
     // Reset location or perform any other necessary actions
     ResetLocation();
+
+    // Calculate delivery fee
+    calculateDeliveryFee();
 
     // Initialize Paystack payment when button is clicked
     initializePayment(onSuccess, onClose);
@@ -130,9 +149,14 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
                 <p>{productsQuantity}</p>
               </section>
               <section className="totals-content">
+                <h4 className="cart-totals-sum">Delivery Fee:</h4>
+                <p>₦ {deliveryFee}</p>
+              </section>
+              <section className="totals-content">
                 <h4 className="cart-totals-sum">Total:</h4>
                 <p>₦ {totalPayment}</p>
               </section>
+            
             </section>
           )}
         </article>
