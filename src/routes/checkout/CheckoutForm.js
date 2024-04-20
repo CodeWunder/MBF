@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
 import ResetLocation from "../../helpers/ResetLocation";
 
@@ -20,7 +20,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   };
 
   // Calculate delivery fee based on options
-  const calculateDeliveryFee = () => {
+  useEffect(() => {
     let fee = 0;
     if (deliveryOption === "normal" && locationType === "island") {
       fee = 7000;
@@ -32,7 +32,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
       fee = 6000;
     }
     setDeliveryFee(fee);
-  };
+  }, [deliveryOption, locationType]);
 
   // Paystack success callback
   const onSuccess = (reference) => {};
