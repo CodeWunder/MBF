@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { usePaystackPayment } from "react-paystack";
 import ResetLocation from "../../helpers/ResetLocation";
-const { Client } = require("whatsapp-web.js");
-const client = new Client();
 
 const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [deliveryOption, setDeliveryOption] = useState("normal");
@@ -20,19 +18,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   };
 
   // Paystack success callback
-  const onSuccess = (reference) => {
-    // Send WhatsApp message
-    const message = `
-      Order Details:
-      Name: ${name}
-      Phone Number: ${phoneNumber}
-      Email: ${email}
-      Delivery Address: ${address}
-      Total Payment: ₦${totalPayment}
-      Payment Reference: ${reference}
-    `;
-    client.sendMessage("08122390396@c.us", message);
-  };
+  const onSuccess = (reference) => {};
 
   // Paystack close callback
   const onClose = () => {
@@ -141,4 +127,3 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-              
