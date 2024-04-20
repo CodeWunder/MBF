@@ -1,9 +1,7 @@
-import React from 'react'
-import Tilt from 'react-parallax-tilt';
+import React from "react";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import ourServices from '../../data/ourServices';
-
-
+import ourServices from "../../data/ourServices";
 
 const OurServices = () => {
   return (
@@ -16,8 +14,11 @@ const OurServices = () => {
     >
       <h2 className="pop-font">Our Services</h2>
       <p className="pop-font section-description">
-        At New Dawn messaging, food and logistics, we procure, package and deliver your fruits,vegatables and food that are either 100percent fertilizer grown for free.
-        We also take off your neck the anxiety and trouble of planning either your corporate or private planning and managing your events.  
+        At New Dawn messaging, food and logistics, we procure, package and
+        deliver your fruits,vegatables and food that are either 100% fertilizer
+        grown free. We also take off your neck the anxiety and trouble of
+        planning either your corporate or private planning and managing your
+        events.
       </p>
       <section className="services-grid  flex-container flex-column">
         {ourServices.map((service) => (
@@ -41,7 +42,7 @@ const OurServices = () => {
         ))}
       </section>
     </motion.article>
-  )
-}
+  );
+};
 
 export default OurServices;
