@@ -124,7 +124,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .checkout-personal-information form button {
   width: 100%; /* Make button fill the width of the form */
   padding: 10px; /* Add padding to button */
-  background-color: #007bff; /* Set button background color */
   color: #fff; /* Set button text color */
   border: none; /* Remove button border */
   border-radius: 4px; /* Add border radius for rounded corners */
@@ -139,7 +138,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .active-button-style {
-  background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -148,7 +146,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .active-button-style:hover {
-  background-color: #0056b3;
+  background-color: rgb(40, 39, 39);
 }
 
 .checkout-address,
