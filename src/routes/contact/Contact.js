@@ -21,7 +21,7 @@ const Contact = () => {
         <section className="contact-us-content-txt">
           <h2>Contact us</h2>
           <p>
-    For any inquiries, please feel free to contact us at <strong>08063329112</strong> or email us at <strong>mbfgbemidele5862@gmail.com</strong>. You can also reach out to us through any of our social media handles.
+    For any inquiries, please feel free to contact us at <strong>07067903294, 07086065667</strong> or email us at <strong>mbfgbemidele5862@gmail.com</strong>. You can also reach out to us through any of our social media handles.
   </p>
   
   <p>
