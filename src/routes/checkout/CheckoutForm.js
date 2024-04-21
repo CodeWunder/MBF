@@ -12,7 +12,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [deliveryFee, setDeliveryFee] = useState(0);
 
   // Calculate total amount including delivery fee
-  const totalAmount = totalPayment + deliveryFee;
+  const totalAmount = parseFloat(totalPayment) + parseFloat(deliveryFee);
 
   // Paystack configuration
   const config = {
@@ -34,7 +34,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     } else if (deliveryOption === "express" && locationType === "mainland") {
       fee = 6000;
     }
-    setDeliveryFee(Number(fee.toFixed(2)));
+    setDeliveryFee(fee.toFixed(2)); // Format to 2 decimal places
   }, [deliveryOption, locationType]);
 
   // Paystack success callback
@@ -150,11 +150,11 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
               </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Delivery Fee:</h4>
-                <p>₦ {deliveryFee.toFixed(2)}</p>
+                <p>₦ {parseFloat(deliveryFee).toFixed(2)}</p>
               </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Product Price:</h4>
-                <p>₦ {totalPayment.toFixed(2)}</p>
+                <p>₦ {parseFloat(totalPayment).toFixed(2)}</p>
               </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Total Amount:</h4>
