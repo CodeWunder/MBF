@@ -38,13 +38,18 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   }, [deliveryOption, locationType]);
 
   // Paystack success callback
-  const onSuccess = (reference) => {};
+  const onSuccess = (reference) => {
+    // Display payment success toast
+    toast.success("Payment successful!");
+    setIsPaymentSuccessModalOpen(true);
+  };
 
   // Paystack close callback
   const onClose = () => {
     // Implementation for whatever you want to do when the Paystack dialog is closed.
     console.log("Payment dialog closed");
   };
+
 
   // Initialize Paystack payment
   const initializePayment = usePaystackPayment(config);
@@ -59,7 +64,12 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 
   return (
     <section className="checkout-personal-information">
-      <form>
+      <ToastContainer />
+      <PaymentSuccessModal
+        isOpen={isPaymentSuccessModalOpen}
+        onClose={() => setIsPaymentSuccessModalOpen(false)}
+      />
+       <form>
         <h3>Delivery details</h3>
 
         <div className="delivery-options">
