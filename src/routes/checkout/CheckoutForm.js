@@ -34,7 +34,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     } else if (deliveryOption === "express" && locationType === "mainland") {
       fee = 6000;
     }
-    setDeliveryFee(fee);
+    setDeliveryFee(Number(fee.toFixed(2)));
   }, [deliveryOption, locationType]);
 
   // Paystack success callback
