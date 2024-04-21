@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
 import ResetLocation from "../../helpers/ResetLocation";
+import PaymentSuccessModal from "./PaymentSuccessModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [deliveryOption, setDeliveryOption] = useState("normal");
@@ -11,6 +14,8 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
 
+  const [isPaymentSuccessModalOpen, setIsPaymentSuccessModalOpen] = useState(false);
+  
   // Calculate total amount including delivery fee
   const totalAmount = parseFloat(totalPayment) + parseFloat(deliveryFee);
 
