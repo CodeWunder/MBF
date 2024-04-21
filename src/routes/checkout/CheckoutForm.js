@@ -11,12 +11,8 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
 
-  // Convert totalPayment and deliveryFee to numbers
-  const totalPaymentNum = parseFloat(totalPayment);
-  const deliveryFeeNum = parseFloat(deliveryFee);
-
   // Calculate total amount including delivery fee
-  const totalAmount = totalPaymentNum + deliveryFeeNum;
+  const totalAmount = totalPayment + deliveryFee;
 
   // Paystack configuration
   const config = {
@@ -38,7 +34,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     } else if (deliveryOption === "express" && locationType === "mainland") {
       fee = 6000;
     }
-    setDeliveryFee(fee.toFixed(2)); // Format to 2 decimal places
+    setDeliveryFee(Number(fee.toFixed(2)));
   }, [deliveryOption, locationType]);
 
   // Paystack success callback
@@ -182,4 +178,4 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-  
+    
