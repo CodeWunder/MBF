@@ -11,9 +11,13 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
 
+  // Convert totalPayment and deliveryFee to numbers
+  const totalPaymentNum = parseFloat(totalPayment);
+  const deliveryFeeNum = parseFloat(deliveryFee);
+
   // Calculate total amount including delivery fee
-  const totalAmount = totalPayment + deliveryFee;
-  
+  const totalAmount = totalPaymentNum + deliveryFeeNum;
+
   // Paystack configuration
   const config = {
     reference: new Date().getTime().toString(),
@@ -34,7 +38,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     } else if (deliveryOption === "express" && locationType === "mainland") {
       fee = 6000;
     }
-    setDeliveryFee(Number(fee.toFixed(2)));
+    setDeliveryFee(fee.toFixed(2)); // Format to 2 decimal places
   }, [deliveryOption, locationType]);
 
   // Paystack success callback
@@ -145,16 +149,20 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           {productsQuantity === 0 ? null : (
             <section className="cart-totals">
               <section className="totals-content">
+                <h4 className="cart-totals-sum">Quantity:</h4>
+                <p>{productsQuantity}</p>
+              </section>
+              <section className="totals-content">
                 <h4 className="cart-totals-sum">Delivery Fee:</h4>
-                <p>₦ {deliveryFee}</p>
+                <p>₦ {deliveryFee.toFixed(2)}</p>
               </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Product Price:</h4>
-                <p>₦ {totalPayment}</p>
+                <p>₦ {totalPayment.toFixed(2)}</p>
               </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Total Amount:</h4>
-                <p>₦ {totalAmount}</p>
+                <p>₦ {totalAmount.toFixed(2)}</p>
               </section>
             </section>
           )}
@@ -174,4 +182,4 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-               
+  
