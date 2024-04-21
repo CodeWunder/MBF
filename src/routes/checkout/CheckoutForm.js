@@ -10,6 +10,14 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [email, setEmail] = useState("");
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
+  const [formErrors, setFormErrors] = useState({
+    name: false,
+    phoneNumber: false,
+    address: false,
+    email: false,
+    deliveryOption: false,
+    locationType: false,
+  });
 
   // Calculate total amount including delivery fee
   const totalAmount = parseFloat(totalPayment) + parseFloat(deliveryFee);
@@ -37,6 +45,24 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     setDeliveryFee(fee.toFixed(2)); // Format to 2 decimal places
   }, [deliveryOption, locationType]);
 
+  // Form validation
+  const validateForm = () => {
+    let valid = true;
+    const errors = {
+      name: name === "",
+      phoneNumber: phoneNumber === "",
+      address: address === "",
+      email: email === "",
+      deliveryOption: deliveryOption === "",
+      locationType: locationType === "",
+    };
+    setFormErrors(errors);
+    Object.values(errors).forEach((error) => {
+      if (error) valid = false;
+    });
+    return valid;
+  };
+
   // Paystack success callback
   const onSuccess = (reference) => {};
 
@@ -52,6 +78,12 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const handleProceedToPayment = () => {
     // Reset location or perform any other necessary actions
     ResetLocation();
+
+    // Form validation
+    if (!validateForm()) {
+      // If form is not valid, do not proceed
+      return;
+    }
 
     // Initialize Paystack payment when button is clicked
     initializePayment(onSuccess, onClose);
@@ -82,6 +114,9 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
             onChange={() => setDeliveryOption("express")}
           />
           <label htmlFor="express-delivery">Express Delivery</label>
+          {formErrors.deliveryOption && (
+            <p className="error-message">Please select a delivery option.</p>
+          )}
         </div>
 
         <div className="location-type">
@@ -104,6 +139,9 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
             onChange={() => setLocationType("island")}
           />
           <label htmlFor="island">Island</label>
+          {formErrors.locationType && (
+            <p className="error-message">Please select a location type.</p>
+          )}
         </div>
             
         <label htmlFor="name">Name:</label>
@@ -112,8 +150,11 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="input-field"
+          className={`input-field ${formErrors.name ? "error-field" : ""}`}
         />
+        {formErrors.name && (
+          <p className="error-message">Please enter your name.</p>
+        )}
 
         <label htmlFor="phone-number">Phone Number:</label>
         <input
@@ -121,8 +162,11 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           id="phone-number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          className="input-field"
+          className={`input-field ${formErrors.phoneNumber ? "error-field" : ""}`}
         />
+        {formErrors.phoneNumber && (
+          <p className="error-message">Please enter your phone number.</p>
+        )}
 
         <label htmlFor="email">Email Address</label>
         <input
@@ -130,20 +174,30 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="input-field"
+          className={`input-field ${formErrors.email ? "error-field" : ""}`}
         />
+        {formErrors.email && (
+          <p className="error-message">Please enter a valid email address.</p>
+        )}
 
         <label htmlFor="address">Delivery Address:</label>
         <textarea
           id="address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          className="input-field"
+          className={`input-field ${formErrors.address ? "error-field" : ""}`}
         />
+        {formErrors.address && (
+          <p className="error-message">Please enter your delivery address.</p>
+        )}
 
         <article className="checkout-carttotals">
           {productsQuantity === 0 ? null : (
             <section className="cart-totals">
+              <section className="totals-content">
+                <h4 className="cart-totals-sum">Quantity:</h4>
+                <p>{productsQuantity}</p>
+              </section>
               <section className="totals-content">
                 <h4 className="cart-totals-sum">Delivery Fee:</h4>
                 <p>₦ {parseFloat(deliveryFee).toFixed(2)}</p>
@@ -165,6 +219,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           type="button"
           className="active-button-style"
           onClick={handleProceedToPayment}
+          disabled={!totalAmount || Object.values(formErrors).some((err) => err)}
         >
           Proceed to payment
         </button>
@@ -174,4 +229,4 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-    
+      
