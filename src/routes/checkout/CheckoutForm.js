@@ -145,10 +145,6 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           {productsQuantity === 0 ? null : (
             <section className="cart-totals">
               <section className="totals-content">
-                <h4 className="cart-totals-sum">Quantity:</h4>
-                <p>{productsQuantity}</p>
-              </section>
-              <section className="totals-content">
                 <h4 className="cart-totals-sum">Delivery Fee:</h4>
                 <p>₦ {parseFloat(deliveryFee).toFixed(2)}</p>
               </section>
