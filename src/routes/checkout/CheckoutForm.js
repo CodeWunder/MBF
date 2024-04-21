@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
 import ResetLocation from "../../helpers/ResetLocation";
 import PaymentSuccessModal from "./PaymentSuccessModal";
+import { ToastContainer, toast } from "react-toastify";
 
 const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [deliveryOption, setDeliveryOption] = useState("normal");
