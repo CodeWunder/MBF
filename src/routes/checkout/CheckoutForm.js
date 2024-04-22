@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
-import ResetLocation from "../../helpers/ResetLocation";
+//import ResetLocation from "../../helpers/ResetLocation";
 import PaymentSuccessModal from "./PaymentSuccessModal";
 import { toast } from "react-toastify";
 
@@ -60,7 +60,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 
   const handleProceedToPayment = () => {
     // Reset location or perform any other necessary actions
-    ResetLocation();
+   // ResetLocation();
 
     // Initialize Paystack payment when button is clicked
     initializePayment(onSuccess, onClose);
