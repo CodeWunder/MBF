@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { usePaystackPayment } from "react-paystack";
 //import ResetLocation from "../../helpers/ResetLocation";
-import PaymentSuccessModal from "./PaymentSuccessModal";
-import { toast } from "react-toastify";
+//import PaymentSuccessModal from "./PaymentSuccessModal";
+//import { toast } from "react-toastify";
 
 const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [deliveryOption, setDeliveryOption] = useState("normal");
@@ -13,14 +13,14 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
 
-  const [isPaymentSuccessModalOpen, setIsPaymentSuccessModalOpen] = useState(false);
+ // const [isPaymentSuccessModalOpen, setIsPaymentSuccessModalOpen] = useState(false);
   
   // Calculate total amount including delivery fee
   const totalAmount = parseFloat(totalPayment) + parseFloat(deliveryFee);
 
   // Paystack configuration
   const config = {
-    reference: new Date().getTime().toString(),
+    //reference: new Date().getTime().toString(),
     email: email,
     amount: totalAmount * 100, // Amount in kobo (100 kobo = ₦1)
     publicKey: "pk_test_5817e3d9657270635e0935b6d57ba1e277ba7b03",
@@ -42,10 +42,11 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   }, [deliveryOption, locationType]);
 
   // Paystack success callback
-  const onSuccess = (reference) => {
+  const onSuccess = () => {
+    console.log('successful')
     // Display payment success toast
-    toast.success("Payment successful!");
-    setIsPaymentSuccessModalOpen(true);
+   // toast.success("Payment successful!");
+    //setIsPaymentSuccessModalOpen(true);
   };
 
   // Paystack close callback
