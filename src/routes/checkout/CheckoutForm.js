@@ -59,7 +59,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   // Initialize Paystack payment
   const initializePayment = usePaystackPayment(config);
 
-  const handleProceedToPayment = () => {
+//  const handleProceedToPayment = () => {
     // Reset location or perform any other necessary actions
    // ResetLocation();
 
@@ -178,7 +178,7 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
         <button
           type="button"
           className="active-button-style"
-          onClick={handleProceedToPayment}
+          onClick={() => initializePayment(onSuccessCallback, onCloseCallback)}}
         >
           Proceed to payment
         </button>
