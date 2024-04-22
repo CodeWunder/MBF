@@ -177,4 +177,3 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-    
