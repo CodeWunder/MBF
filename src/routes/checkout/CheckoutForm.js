@@ -13,8 +13,6 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
   const [locationType, setLocationType] = useState("");
   const [deliveryFee, setDeliveryFee] = useState(0);
 
- // const [isPaymentSuccessModalOpen, setIsPaymentSuccessModalOpen] = useState(false);
-  
   // Calculate total amount including delivery fee
   const totalAmount = parseFloat(totalPayment) + parseFloat(deliveryFee);
 
@@ -55,25 +53,16 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
     console.log("Payment dialog closed");
   };
 
-
   // Initialize Paystack payment
   const initializePayment = usePaystackPayment(config);
 
-//  const handleProceedToPayment = () => {
-    // Reset location or perform any other necessary actions
-   // ResetLocation();
-
-    // Initialize Paystack payment when button is clicked
-    initializePayment(onSuccess, onClose);
-  };
-
   return (
     <section className="checkout-personal-information">
-      <PaymentSuccessModal
+      {/* <PaymentSuccessModal
         isOpen={isPaymentSuccessModalOpen}
         onClose={() => setIsPaymentSuccessModalOpen(false)}
-      />
-       <form>
+      /> */}
+      <form>
         <h3>Delivery details</h3>
 
         <div className="delivery-options">
@@ -174,11 +163,11 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
           )}
         </article>
 
-        {/* Call handleProceedToPayment when button is clicked */}
+        {/* Call initializePayment when button is clicked */}
         <button
           type="button"
           className="active-button-style"
-          onClick={() => initializePayment(onSuccessCallback, onCloseCallback)}}
+          onClick={() => initializePayment(onSuccess, onClose)}
         >
           Proceed to payment
         </button>
@@ -188,4 +177,4 @@ const CheckoutForm = ({ totalPayment, productsQuantity }) => {
 };
 
 export default CheckoutForm;
-  
+    
