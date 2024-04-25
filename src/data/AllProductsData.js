@@ -83,7 +83,7 @@ export const allProductsData = [
   {
     id: "spring-onion",
     ItemImg: SpringOnions,
-    ItemName: "Spring Onion",
+    ItemName: "Green Beans",
     ItemIngredients:
       "Pizza dough, tomato sauce, fresh mozzarella, olive oil, basil leaves.",
     ItemPrice: (1500).toFixed(2),
@@ -102,7 +102,7 @@ export const allProductsData = [
     ItemName: "Pepper (Rodo)",
     ItemIngredients:
       "Rodo peppers are a type of chili pepper known for their red color and smoky flavor.",
-    ItemPrice: (1500).toFixed(2),
+    ItemPrice: (3000).toFixed(2),
     Category: "Veggies",
     attributes: [
       {
@@ -118,7 +118,7 @@ export const allProductsData = [
     ItemName: "Red Bell Pepper",
     ItemIngredients:
       "Redbell peppers are a type of sweet pepper available in various colors, including red, yellow, orange, and green.",
-    ItemPrice: (1500).toFixed(2),
+    ItemPrice: (3000).toFixed(2),
     Category: "Veggies",
     attributes: [
       {
@@ -211,7 +211,7 @@ export const allProductsData = [
   {
     id: "rustica-pizza",
     ItemImg: Tomatoes,
-    ItemName: "Green Pepper ",
+    ItemName: "Tomatoes ",
     ItemIngredients:
       "Green peppers are unripe bell peppers and have a grassy flavor.",
     ItemPrice: (4000).toFixed(2),
