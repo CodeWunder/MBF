@@ -102,7 +102,7 @@ export const allProductsData = [
     ItemName: "Pepper (Rodo)",
     ItemIngredients:
       "Rodo peppers are a type of chili pepper known for their red color and smoky flavor.",
-    ItemPrice: (3000).toFixed(2),
+    ItemPrice: (6000).toFixed(2),
     Category: "Veggies",
     attributes: [
       {
@@ -118,7 +118,7 @@ export const allProductsData = [
     ItemName: "Red Bell Pepper",
     ItemIngredients:
       "Redbell peppers are a type of sweet pepper available in various colors, including red, yellow, orange, and green.",
-    ItemPrice: (3000).toFixed(2),
+    ItemPrice: (5500).toFixed(2),
     Category: "Veggies",
     attributes: [
       {
